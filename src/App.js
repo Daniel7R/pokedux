@@ -1,20 +1,24 @@
 import { Col } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import Searcher from './components/Searcher';
 import logo from "./statics/logo.svg";
 import CardList from "./components/CardList";
 import { getPokemons } from "./api";
+import { setPokemons } from "./actions";
 import './styles/App.css';
 
 function App() {
-  const [pokemons, setPokemons] = useState([]);
+
+  const pokemons = useSelector(state => state.pokemons);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchPokemons = async() => {
 
       const responsePokemons = await getPokemons();
-      setPokemons(responsePokemons);
+      dispatch(setPokemons(responsePokemons));
     };
 
     fetchPokemons();

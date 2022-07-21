@@ -10,10 +10,10 @@ import { getPokemonsWithDetails, setLoading } from "./actions";
 import "./styles/App.css";
 
 function App() {
-  const pokemons = useSelector((state) => state.pokemons);
+  const pokemons = useSelector((state) => state.get("pokemons")).toJS();
   const dispatch = useDispatch();
 
-  const loading = useSelector((state) => state.loading);
+  const loading = useSelector((state) => state.get("loading"));
 
   useEffect(() => {
     dispatch(setLoading(true));

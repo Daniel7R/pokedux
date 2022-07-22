@@ -9,7 +9,7 @@ import {
 import thunk from "redux-thunk";
 
 import { logger } from "./middlewares";
-import { pokemonsReducer } from "./reducers/pokemons";
+import { rootReducer } from "./reducers/rootReducer";
 import App from "./App";
 import "./index.css";
 
@@ -19,7 +19,7 @@ const composeEnhancers = composeAlt(
   applyMiddleware(thunk, logger)
 );
 
-const store = createStore(pokemonsReducer, composeEnhancers);
+const store = createStore(rootReducer, composeEnhancers);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
